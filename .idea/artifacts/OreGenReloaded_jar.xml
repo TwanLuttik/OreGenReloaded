@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="OreGenReloaded:jar">
+    <output-path>$PROJECT_DIR$/../OUT-PUT</output-path>
+    <root id="archive" name="OreGenReloaded.jar">
+      <element id="module-output" name="OreGenReloaded" />
+    </root>
+  </artifact>
+</component>

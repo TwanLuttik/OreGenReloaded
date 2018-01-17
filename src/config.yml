@@ -1,0 +1,18 @@
+#
+#
+#                  <--- OreGenReloaded --->
+#          Created by Twan Luttik, Config version 1.0
+#
+#
+check_for_updates: true
+use_stone: true
+Chances:
+  Coal: 15
+  Iron: 25
+  Gold: 32
+  Redstone: 38
+  Lapis: 43
+  Emerald: 47
+  Diamond: 50
+#add worlds to enable this plugin
+Worlds:
