@@ -24,11 +24,7 @@ public class OreGenReloaded extends JavaPlugin {
 
 
     public void onEnable() {
-        LOAD();
-
         this.checker = new UpdateChecker(this);
-
-
         if (this.checker.isConnected()) {
             if (this.checker.hasUpdate()) {
                 getServer().getConsoleSender().sendMessage(Strings.green + "------------------------");
@@ -49,7 +45,7 @@ public class OreGenReloaded extends JavaPlugin {
             getConfig().set("Worlds", addWorlds());
             saveConfig();
         }
-
+        LOAD();
         Bukkit.getConsoleSender().sendMessage(Strings.logName + "Has been enabled " + PluginVersionOn);
     }
 

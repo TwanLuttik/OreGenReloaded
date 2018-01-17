@@ -41,11 +41,8 @@ public class Commands implements CommandExecutor {
 
             } else if (args[0].equalsIgnoreCase("reload")) {
                 if (p.hasPermission("og.reload")) {
-                    cfgM = new ConfigManager();
 
-                    cfgM.saveConfig();
-
-                    //this.plugin.reloadConfig();
+                    this.plugin.reloadConfig();
                     this.plugin.log.info("OreGenerator config file reloaded.");
                 }
             }
