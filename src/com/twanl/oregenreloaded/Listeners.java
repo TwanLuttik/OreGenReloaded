@@ -29,8 +29,11 @@ public class Listeners implements Listener {
             int toid = b.getTypeId();
             if ((toid == 0) &&
                     (generatesCobble(id, b))) {
+
                 List<String> worlds = this.plugin.getConfig().getStringList("Worlds");
+
                 if (worlds.contains(event.getBlock().getLocation().getWorld().getName())) {
+
                     Random pick = new Random();
                     int chance = 0;
                     for (int counter = 1; counter <= 1; counter++) {

@@ -26,7 +26,7 @@ public class Commands implements CommandExecutor {
 
         if (label.equalsIgnoreCase("og")) {
             if (args.length == 0) {
-                if (p.hasPermission("og.reload")) {
+                if (p.hasPermission("og.reload") && p.isOp()) {
 
                     p.sendMessage(Strings.DgrayBIS + "-----------------------------\n" +
                             Strings.goldB + "          OreGenReloaded\n" +
@@ -40,14 +40,16 @@ public class Commands implements CommandExecutor {
                 return true;
 
             } else if (args[0].equalsIgnoreCase("reload")) {
-                if (p.hasPermission("og.reload")) {
+                if (p.hasPermission("og.reload") && p.isOp()) {
 
                     this.plugin.reloadConfig();
                     this.plugin.log.info("OreGenerator config file reloaded.");
+                    p.sendMessage(Strings.goldI + "OreGenerator config file reloaded.");
+                } else {
+                    p.sendMessage(Strings.noPerm);
                 }
             }
             return true;
-
 
         }
         return true;
