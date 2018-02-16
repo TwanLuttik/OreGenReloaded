@@ -1,16 +1,12 @@
 package com.twanl.oregenreloaded;
 
 
-import com.twanl.oregenreloaded.other.Strings;
-import com.twanl.oregenreloaded.other.UpdateChecker;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockFromToEvent;
-import org.bukkit.event.player.PlayerJoinEvent;
 
 import java.util.List;
 import java.util.Random;
@@ -80,6 +76,7 @@ public class Listeners implements Listener {
                 }
             }
         }
+
     }
 
     private final BlockFace[] faces = { BlockFace.SELF, BlockFace.UP, BlockFace.DOWN, BlockFace.NORTH, BlockFace.EAST, BlockFace.SOUTH, BlockFace.WEST };
@@ -97,45 +94,5 @@ public class Listeners implements Listener {
             }
         } return false;
     }
-
-
-
-    @EventHandler
-    public void onJoin(PlayerJoinEvent event) {
-
-
-        // let the player know if there is an update for the plugin.
-        if (plugin.getConfig().getBoolean("check_for_updates")) {
-            Player p = event.getPlayer();
-
-
-            plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
-
-                public UpdateChecker checker;
-                public void run() {
-                    this.checker = new UpdateChecker(plugin);
-
-                    if (p.hasPermission("og.update")) {
-                        if (this.checker.isConnected()) {
-                            if (this.checker.hasUpdate()) {
-                                p.sendMessage(Strings.DgrayBIS + "------------------------\n" +
-                                        Strings.red + "OreGenReloaded is outdated!\n" +
-                                        Strings.gray + "Newest version: " + Strings.white + this.checker.getLatestVersion() + "\n" +
-                                        Strings.gray + "Your version: " + Strings.white + plugin.getDescription().getVersion() + "\n" +
-                                        Strings.DgrayBIS + "------------------------");
-                            } else {
-                                p.sendMessage(Strings.DgrayBIS + "------------------------\n" +
-                                        Strings.green + "OreGenReloaded is up to date.\n" +
-                                        Strings.DgrayBIS + "------------------------");
-                            }
-                        }
-                    } else {
-                        return;
-                    }
-                }
-            }, 20);
-        }
-    }
-
 
 }

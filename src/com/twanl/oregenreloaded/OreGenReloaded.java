@@ -1,7 +1,8 @@
 package com.twanl.oregenreloaded;
 
 
-import com.twanl.oregenreloaded.other.Metrics;
+import com.twanl.oregenreloaded.events.JoinEvent;
+import com.twanl.oregenreloaded.util.Metrics;
 import com.twanl.oregenreloaded.other.Strings;
 import com.twanl.oregenreloaded.other.UpdateChecker;
 import org.bukkit.Bukkit;
@@ -72,6 +73,7 @@ public class OreGenReloaded extends JavaPlugin {
     public void LOAD() {
         // Register listeners
         getServer().getPluginManager().registerEvents(new Listeners(), this);
+        getServer().getPluginManager().registerEvents(new JoinEvent(), this);
 
         // Register commands
         Commands commands = new Commands();

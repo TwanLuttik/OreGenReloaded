@@ -19,16 +19,15 @@ public class Commands implements CommandExecutor {
 
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         Player p = (Player) sender;
-
         if (!(sender instanceof Player)) {
             sender.sendMessage(Strings.logName + ChatColor.RED + "Only a player can execute commands!");
             return true;
         }
 
 
-        if (label.equalsIgnoreCase("og")) {
+        if (cmd.getName().equalsIgnoreCase("og")) {
             if (args.length == 0) {
-                if (p.hasPermission("og.og") && p.isOp()) {
+                if (p.hasPermission("og.og")) {
 
                     p.sendMessage(Strings.DgrayBIS + "-----------------------------\n" +
                             Strings.goldB + "          OreGenReloaded\n" +
@@ -42,7 +41,7 @@ public class Commands implements CommandExecutor {
                 return true;
 
             } else if (args[0].equalsIgnoreCase("reload")) {
-                if (p.hasPermission("og.reload") && p.isOp()) {
+                if (p.hasPermission("og.reload")) {
 
                     cF = new File(plugin.getDataFolder(), "config.yml");
 

@@ -1,4 +1,4 @@
-package com.twanl.oregenreloaded.other;
+package com.twanl.oregenreloaded.util;
 
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
