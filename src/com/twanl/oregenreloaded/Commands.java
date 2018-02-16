@@ -1,7 +1,6 @@
 package com.twanl.oregenreloaded;
 
 
-import com.twanl.oregenreloaded.other.ConfigManager;
 import com.twanl.oregenreloaded.other.Strings;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -9,10 +8,13 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.io.File;
+import java.io.IOException;
+
 public class Commands implements CommandExecutor {
 
     private OreGenReloaded plugin = OreGenReloaded.getPlugin(OreGenReloaded.class);
-    public ConfigManager cfgM;
+    public File cF;
 
 
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
@@ -26,7 +28,7 @@ public class Commands implements CommandExecutor {
 
         if (label.equalsIgnoreCase("og")) {
             if (args.length == 0) {
-                if (p.hasPermission("og.reload") && p.isOp()) {
+                if (p.hasPermission("og.og") && p.isOp()) {
 
                     p.sendMessage(Strings.DgrayBIS + "-----------------------------\n" +
                             Strings.goldB + "          OreGenReloaded\n" +
@@ -42,9 +44,26 @@ public class Commands implements CommandExecutor {
             } else if (args[0].equalsIgnoreCase("reload")) {
                 if (p.hasPermission("og.reload") && p.isOp()) {
 
-                    this.plugin.reloadConfig();
-                    this.plugin.log.info("OreGenerator config file reloaded.");
-                    p.sendMessage(Strings.goldI + "OreGenerator config file reloaded.");
+                    cF = new File(plugin.getDataFolder(), "config.yml");
+
+                    if (!cF.exists()) {
+                        p.sendMessage(Strings.red + "config.yml file is not found!");
+
+                        try {
+                            cF.createNewFile();
+                            plugin.saveConfig();
+                            p.sendMessage(Strings.green + "Created succsesfully a new config.yml file!");
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                            p.sendMessage(Strings.red + "failed to create a new config.yml file!");
+                        }
+
+                    } else {
+                        plugin.reloadConfig();
+                        p.sendMessage(Strings.green + "OreGenerator succsesfully reloaded!");
+                    }
+
+
                 } else {
                     p.sendMessage(Strings.noPerm);
                 }

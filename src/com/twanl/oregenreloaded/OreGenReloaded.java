@@ -1,6 +1,7 @@
 package com.twanl.oregenreloaded;
 
 
+import com.twanl.oregenreloaded.other.Metrics;
 import com.twanl.oregenreloaded.other.Strings;
 import com.twanl.oregenreloaded.other.UpdateChecker;
 import org.bukkit.Bukkit;
@@ -45,6 +46,8 @@ public class OreGenReloaded extends JavaPlugin {
             getConfig().set("Worlds", addWorlds());
             saveConfig();
         }
+
+        Metrics metrics = new Metrics(this);
         LOAD();
         Bukkit.getConsoleSender().sendMessage(Strings.logName + "Has been enabled " + PluginVersionOn);
     }
