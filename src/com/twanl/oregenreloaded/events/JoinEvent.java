@@ -32,15 +32,15 @@ public class JoinEvent implements Listener {
                     public UpdateChecker checker;
 
                     public void run() {
-                        this.checker = new UpdateChecker(plugin);
+                        checker = new UpdateChecker(plugin);
 
-                        if (this.checker.isConnected()) {
-                            if (this.checker.hasUpdate()) {
+                        if (checker.isConnected()) {
+                            if (checker.hasUpdate()) {
                                 p1.sendMessage(Strings.DgrayBS + "----------------------\n");
                                 connection.sendPacket(packet);
                                 p1.sendMessage(" \n" +
                                         Strings.white + "Your version: " + plugin.getDescription().getVersion() + "\n" +
-                                        Strings.white + "Newest version: " + Strings.green + this.checker.getLatestVersion() + "\n" +
+                                        Strings.white + "Newest version: " + Strings.green + checker.getLatestVersion() + "\n" +
                                         Strings.DgrayBS + "----------------------");
                             } else {
                                 p1.sendMessage(Strings.DgrayBS + "----------------------\n" +
